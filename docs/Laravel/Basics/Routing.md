@@ -315,8 +315,213 @@ Laravel automatically queries the database based on the route parameter.
 
 ---
 
-## Interview Summary
+---
 
-**Definition:**
+## Q12. What is a Fallback Route?
 
-> Routing is the mechanism that maps an incoming HTTP request to a specific callback or controller action. It determines how a Laravel application responds to different URLs and HTTP methods.
+### Answer
+
+A **Fallback Route** is executed when no other route matches the incoming request. It is commonly used to display a custom **404 Not Found** page.
+
+Example:
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
+```
+
+### Use Cases
+
+- Custom 404 page
+- Redirect users to a specific page
+- Return a JSON response for APIs
+
+### Interview Tip
+
+> The fallback route should always be defined **at the end** of the route file because Laravel matches routes in the order they are defined.
+
+---
+
+## Q13. What is Rate Limiting in Laravel?
+
+### Answer
+
+**Rate Limiting** restricts the number of requests a client can make within a given time period. It helps protect applications from abuse, brute-force attacks, and API overuse.
+
+Laravel provides built-in rate limiting using the `RateLimiter` facade and the `throttle` middleware.
+
+Example:
+
+```php
+Route::middleware('throttle:60,1')->group(function () {
+    Route::get('/profile', function () {
+        //
+    });
+});
+```
+
+This allows:
+
+- **60 requests**
+- **Per 1 minute**
+
+### API Example
+
+Laravel automatically applies rate limiting to API routes.
+
+```php
+Route::middleware('throttle:api')->group(function () {
+    //
+});
+```
+
+### Benefits
+
+- Prevents abuse
+- Protects APIs
+- Reduces server load
+- Improves security
+
+---
+
+## Q14. What is Method Spoofing?
+
+### Answer
+
+HTML forms support only **GET** and **POST** methods.
+
+To send **PUT**, **PATCH**, or **DELETE** requests, Laravel uses **Method Spoofing**.
+
+Example:
+
+```blade
+<form action="/users/1" method="POST">
+    @csrf
+    @method('PUT')
+
+    <button type="submit">
+        Update
+    </button>
+</form>
+```
+
+Laravel converts the request into a **PUT** request internally.
+
+Equivalent HTML:
+
+```html
+<input type="hidden" name="_method" value="PUT">
+```
+
+### Supported Methods
+
+- PUT
+- PATCH
+- DELETE
+
+### Interview Tip
+
+> Method Spoofing is required because browsers do not natively support PUT, PATCH, or DELETE in HTML forms.
+
+---
+
+## Q15. What is CORS?
+
+### Answer
+
+**CORS (Cross-Origin Resource Sharing)** is a browser security mechanism that controls whether a web application can access resources from a different domain, protocol, or port.
+
+Example:
+
+Frontend:
+
+```
+http://localhost:3000
+```
+
+Backend:
+
+```
+http://localhost:8000
+```
+
+Without CORS, the browser blocks the request.
+
+Laravel allows configuring CORS using the `config/cors.php` configuration file.
+
+Example:
+
+```php
+'allowed_origins' => [
+    'http://localhost:3000',
+],
+```
+
+### Why is CORS Needed?
+
+- Allows frontend and backend to communicate
+- Enables secure API access
+- Prevents unauthorized cross-origin requests
+
+### Interview Tip
+
+> CORS is enforced by the **browser**, not Laravel. Laravel simply sends the appropriate HTTP headers.
+
+---
+
+## Q16. What is Route Caching?
+
+### Answer
+
+Route Caching improves application performance by storing all registered routes in a cached file.
+
+Instead of parsing route definitions on every request, Laravel loads the cached routes.
+
+Create route cache:
+
+```bash
+php artisan route:cache
+```
+
+Clear route cache:
+
+```bash
+php artisan route:clear
+```
+
+View all routes:
+
+```bash
+php artisan route:list
+```
+
+### Benefits
+
+- Faster application boot time
+- Better production performance
+- Reduces route registration overhead
+
+### Limitations
+
+Route caching **does not support Closure-based routes**.
+
+Example (Not Supported):
+
+```php
+Route::get('/', function () {
+    return 'Welcome';
+});
+```
+
+Instead, use controllers:
+
+```php
+Route::get('/', [HomeController::class, 'index']);
+```
+
+### Interview Tip
+
+> Route caching should be used in **production** environments for better performance. It only works when all routes are controller-based and contain no Closures.
