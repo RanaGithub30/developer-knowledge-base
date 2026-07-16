@@ -269,7 +269,7 @@ Laravel automatically broadcasts the event if it implements `ShouldBroadcast`.
 
 ---
 
-## Q14. What data is sent to the client?
+## Q14. How data is sent to the client?
 
 ### Answer
 
@@ -461,36 +461,7 @@ Broadcasting provides several benefits:
 
 ---
 
-## Q23. Give a real-world example of Broadcasting.
-
-### Answer
-
-Consider a chat application.
-
-```text
-User Sends Message
-         │
-         ▼
-Controller
-         │
-         ▼
-MessageSent Event
-         │
-         ▼
-Broadcast Driver
-         │
-         ▼
-WebSocket Server
-         │
-         ▼
-All Connected Users Receive the Message Instantly
-```
-
-Every connected user sees the new message without refreshing the page.
-
----
-
-## Q24. Why is Broadcasting important in Laravel?
+## Q23. Why is Broadcasting important in Laravel?
 
 ### Answer
 
