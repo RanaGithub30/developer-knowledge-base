@@ -1,6 +1,6 @@
 # Top 100 Laravel Interview Questions & Answers
 
-========= Introduction ===========
+# Introduction
 
 ## Q1. What is Laravel?
 
@@ -88,7 +88,7 @@ Laravel is popular because it:
 
 ---
 
-======== Middleware ===========
+# Middleware
 
 ## Q6. What is Middleware in Laravel?
 
@@ -100,7 +100,7 @@ It intercepts requests before they reach the controller (or before the response 
 
 ---
 
-========= Composer ==========
+# Composer
 
 ## Q7. What is Composer?
 
@@ -131,7 +131,7 @@ composer create-project laravel/laravel myproject
 
 ---
 
-=============== MVC ==========
+# MVC
 
 ## Q9. What is the MVC architecture?
 
@@ -230,7 +230,7 @@ class UserController extends Controller
 
 ---
 
-======= Routing ========
+# Routing
 
 ## Q13. What is Routing in Laravel?
 
@@ -489,7 +489,7 @@ CSRF attacks exploit the trust that a website has in an authenticated user's bro
 
 ---
 
-====== Controller =======
+# Controller
 
 ## Q22. What is a Resource Controller?
 
@@ -629,7 +629,7 @@ Route::get('/users/{user}', [
 
 ---
 
-========= Migration ==========
+# Migration
 
 ## Q26. What are Migrations in Laravel?
 
@@ -727,7 +727,7 @@ Laravel creates the `products` table with the specified columns.
 
 ---
 
-====== Service Providers ========
+# Service Providers
 
 ## Q32. What are Service Providers in Laravel?
 
@@ -798,7 +798,7 @@ public function boot()
 
 ---
 
-======== Service Container =========
+# Service Container
 
 ## Q35. What is the Service Container in Laravel?
 
@@ -859,7 +859,7 @@ Laravel automatically creates the `UserService` object.
 
 ---
 
-======== Relationship =========
+# Relationship
 
 ## Q37. What are Relationships in Laravel?
 
@@ -1021,7 +1021,7 @@ $users = User::with('posts')->get();
 ```
 ---
 
-=========== Traits =========
+# Traits
 
 ## Q44. What are Traits in PHP?
 
@@ -1254,7 +1254,7 @@ Use **Traits** for reusable functionality and **Abstract Classes** for shared be
 
 ---
 
-======= Queues & Jobs ========
+# Queues & Jobs
 
 ## Q52. What are Queues in Laravel?
 
@@ -1596,7 +1596,7 @@ Jobs perform work, while Events notify different parts of the application.
 
 ---
 
-========== Helpers ==========
+# Helpers
 
 ## Q69. What are Helpers in Laravel?
 
@@ -1646,7 +1646,7 @@ Some commonly used helpers are:
 
 ---
 
-=========== Facades =========
+# Facades
 
 ## Q71. What are Facades in Laravel?
 
@@ -1977,7 +1977,7 @@ class UserService
 
 > **"Laravel recommends Dependency Injection because it creates loosely coupled, testable, and maintainable code. While Facades are convenient for simple tasks, relying on them excessively can hide dependencies and make testing more difficult. Therefore, Dependency Injection is the preferred approach for business logic and scalable applications."**
 
-===== Events ====
+# Events
 
 ## Q81. What are Events in Laravel?
 
@@ -2135,7 +2135,7 @@ This reduces the need to manually register listeners in the `EventServiceProvide
 
 ---
 
-===== Design Patterns =====
+# Design Patterns
 
 ## Q89. What is a Design Pattern?
 
@@ -2363,7 +2363,7 @@ $users = User::where('status', 'active')
 
 ---
 
-========= Contracts =========
+# Contracts
 
 ## Q91. What are Contracts in Laravel?
 
@@ -2449,7 +2449,7 @@ Contracts provide several benefits:
 
 ---
 
-===== Cache ===
+# Cache
 
 ## Q96. What is Cache in Laravel?
 
@@ -2526,7 +2526,7 @@ Cache provides several benefits:
 
 ---
 
-====== Broadcasting ======
+# Broadcasting
 
 ## Q100. What is Broadcasting in Laravel?
 
@@ -2586,7 +2586,7 @@ Echo works with Reverb, Pusher, and other supported broadcasting drivers.
 
 ---
 
-==== Localization ====
+# Localization
 
 ## Q103. What is Localization in Laravel?
 
