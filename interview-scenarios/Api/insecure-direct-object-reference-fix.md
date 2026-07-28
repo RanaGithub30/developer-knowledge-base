@@ -25,9 +25,7 @@ A security review found that any logged-in user can change the ID in the URL and
 
 ---
 
-# API Security Interview Answer: IDOR Vulnerability
-
-## Detailed Answer
+# Answer:
 
 This is an IDOR (Insecure Direct Object Reference) vulnerability. It happens when an API uses a user-controlled value, such as an ID in the URL, to access a database record without verifying that the authenticated user is actually allowed to access that record.
 
