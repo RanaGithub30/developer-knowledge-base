@@ -264,3 +264,17 @@ In short:
 - **Routing** finds the correct controller.
 - **Controllers** handle the request.
 - **Laravel Response** is returned to the browser.
+
+# Interview Specific Answer:
+
+When a user sends a request, it first reaches the public/index.php file, which is the entry point of Laravel. This file loads Composer autoloading and creates the Laravel application instance using bootstrap/app.php.
+
+After that, the request is handled by the HTTP Kernel. During application bootstrapping, Laravel loads service providers which register and initialize application services.
+
+Then the request passes through the middleware pipeline. Middleware handles tasks like authentication, authorization, CSRF protection, and request filtering.
+
+After middleware execution, the router matches the URL with the defined routes in web.php or api.php. Once the route is matched, Laravel resolves the required controller using the service container.
+
+The controller executes the business logic, usually by calling service classes, repositories, models, or external APIs. Laravel's dependency injection automatically resolves required dependencies through the service container.
+
+Finally, the controller returns a response, which travels back through middleware and is sent to the user's browser.
