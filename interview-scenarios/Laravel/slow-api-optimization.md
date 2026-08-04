@@ -58,3 +58,26 @@ If the table has grown extremely large:
 ## Step 6: Measure Performance
 
 Finally, measure the improvement by comparing benchmarks **before and after** implementing the optimizations to ensure the changes have reduced the API response time effectively.
+
+## Interview Answer:
+
+First, I will not directly optimize without knowing the bottleneck. I will analyze the API using Laravel Telescope, logs, and monitoring tools.
+
+I will check:
+
+Number of database queries
+Slow queries
+Response time breakdown
+Memory usage
+
+If I find an N+1 query problem, I will use eager loading:
+
+Order::with(['customer','products'])->paginate(20)
+
+Then I will analyze database queries using EXPLAIN and add proper indexes on frequently filtered or joined columns.
+
+I will optimize the API response using API Resources and select only required columns.
+
+For frequently accessed data, I can introduce Redis caching.
+
+After changes, I will test in staging with production-like data and monitor the improvement before deploying.
