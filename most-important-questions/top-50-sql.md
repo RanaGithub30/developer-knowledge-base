@@ -829,3 +829,58 @@ CREATE TABLE Enrollment
 | Example: EmployeeID | Example: StudentID + CourseID |
 
 ---
+
+## Q52. # How do you use `EXPLAIN` to optimize a query?
+
+`EXPLAIN` is used to **analyze how the database executes a SQL query**. It helps identify problems such as missing indexes, full table scans, and inefficient joins.
+
+## Example
+
+```sql
+EXPLAIN
+SELECT *
+FROM users
+WHERE email = 'test@example.com';
+```
+
+The output shows information such as:
+
+* **type** → How the table is accessed (`ALL`, `range`, `ref`, `const`, etc.)
+* **possible_keys** → Indexes the database could use
+* **key** → Index actually selected
+* **rows** → Estimated number of rows examined
+* **Extra** → Additional information such as `Using index`, `Using where`, or `Using temporary`
+
+## How I use EXPLAIN to optimize
+
+1. Run `EXPLAIN` on the slow query.
+2. Check for **full table scans (`type = ALL`)**.
+3. Check whether the expected index is being used.
+4. Look at the **rows** value to see how much data is being scanned.
+5. Check `Extra` for expensive operations such as `Using temporary` or `Using filesort`.
+6. Add or improve indexes where appropriate.
+7. Run `EXPLAIN` again and compare the execution plan.
+
+### Example
+
+Before adding an index:
+
+```sql
+EXPLAIN
+SELECT *
+FROM users
+WHERE email = 'test@example.com';
+```
+
+If the query performs a full table scan, we can add an index:
+
+```sql
+CREATE INDEX idx_users_email
+ON users(email);
+```
+
+Then run `EXPLAIN` again and verify that the index is being used and fewer rows are examined.
+
+## Interview Answer
+
+> **I use `EXPLAIN` to understand the execution plan of a SQL query. I mainly check the access type, indexes being considered and used, estimated rows scanned, and the `Extra` column. If I find a full table scan or an inefficient join, I review the query and add or optimize indexes where appropriate, then run `EXPLAIN` again to verify the improvement.**

@@ -140,7 +140,12 @@ This is an example of inheritance.
 
 **Polymorphism** is one of the four main principles of Object-Oriented Programming (OOP).
 
-Polymorphism means **the ability of an object or method to take multiple forms and perform different behaviors based on the situation**.
+Polymorphism means means one interface or method can have multiple forms or behaviors.
+
+The word literally means:
+
+Poly = Many
+Morphism = Forms
 
 In PHP, polymorphism is achieved using:
 - Method overriding
@@ -472,3 +477,57 @@ $db = new Database();
 
 ?>
 ```
+
+# Q16. What is a Trait in PHP?
+
+**Answer:**
+
+A **Trait** in PHP is a mechanism for **code reuse**. It allows us to define common methods and properties in one place and reuse them in multiple classes.
+
+PHP does not support multiple inheritance, so Traits provide a way for a class to reuse functionality from multiple sources.
+
+### Example
+
+```php
+trait Logger
+{
+    public function log(string $message): void
+    {
+        echo $message;
+    }
+}
+
+class User
+{
+    use Logger;
+}
+
+class Order
+{
+    use Logger;
+}
+
+$user = new User();
+$user->log("User created");
+
+$order = new Order();
+$order->log("Order created");
+```
+
+Here, both `User` and `Order` can use the `log()` method without inheriting from the same parent class.
+
+---
+
+## When would you use Traits?
+
+I would use a Trait when:
+
+1. **Multiple classes need the same functionality**
+2. I want to **avoid duplicate code**
+3. The classes are **not related through inheritance**
+4. I want to add a **reusable piece of behavior** to different classes
+5. I need to combine functionality from multiple Traits
+
+For example, if `User`, `Admin`, and `Customer` all need logging functionality, I can create a `Logger` Trait and reuse it.
+
+---

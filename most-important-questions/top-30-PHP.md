@@ -1120,3 +1120,11 @@ echo $value; // Output: 100
 ## Interview One-Line Answer:
 
 **Call by Value passes a copy of data, while Call by Reference passes the actual variable reference, allowing changes to affect the original variable.**
+
+---
+
+# Q36. What is Dependency Injection?
+
+**Answer**
+
+Dependency Injection is a design pattern where a class receives its dependencies from outside instead of creating them internally. It helps achieve loose coupling, improves testability and maintainability, and makes it easier to replace implementations. Constructor injection is the most commonly used type in PHP.
