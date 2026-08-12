@@ -295,6 +295,12 @@ Route::middleware('auth:sanctum')
 
 ---
 
+## Q16.a How do you secure a REST API?
+
+### Answer
+
+I secure a REST API using multiple layers rather than relying on a single mechanism. I would use HTTPS for encryption, strong authentication such as OAuth 2.0 or JWT where appropriate, authorization using roles or permissions, input validation, rate limiting, secure headers, proper error handling, and logging/monitoring. I would also protect sensitive data and secrets, keep dependencies updated, and follow the principle of least privilege.
+
 ## Q17. What are HTTP status codes commonly used in REST APIs?
 
 ### Answer
