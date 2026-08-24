@@ -19,6 +19,8 @@
 15. [How would you investigate and optimize a Laravel application's performance?](#15-how-would-you-investigate-and-optimize-a-laravel-applications-performance)
 16. [Explain Module-Based Architecture in Laravel. Why would you use it?](#16-explain-module-based-architecture-in-laravel-why-would-you-use-it)
 17. [What is a Cron Job? Why do we use it? When do we use Laravel Task Scheduling?](#17-what-is-a-cron-job-why-do-we-use-it-when-do-we-use-laravel-task-scheduling)
+## 18. [How do you prevent SQL Injection in a Laravel application?]
+(#18-how-do-you-prevent-sql-injection-in-a-laravel-application)
 
 ## 1. What is the Laravel Service Container and why do we use it?
 
@@ -593,5 +595,23 @@ For example, in Laravel we can schedule an Artisan command to run every day at m
 So, Cron is the server-level mechanism that triggers the scheduler, while Laravel Task Scheduling is the application-level feature where we define and manage our scheduled tasks.
 
 We use Task Scheduling when the task is related to our Laravel application's business logic and needs to run periodically.
+
+---
+
+## 18. How do you prevent SQL Injection in a Laravel application?
+
+**Answer:**
+
+SQL Injection is prevented in Laravel mainly by using Laravel’s Query Builder and Eloquent ORM, because they use parameterized queries and bind user input instead of directly concatenating it into SQL.
+
+For example, I would prefer something like User::where('email', $email)->first() or DB::table('users')->where('email', $email)->first() rather than building a raw SQL string with user input.
+
+If I need to use raw SQL, I make sure to use parameter binding, for example DB::select('SELECT * FROM users WHERE email = ?', [$email]), instead of directly inserting $email into the query.
+
+I also validate and sanitize incoming data using Laravel Form Requests or validation rules. However, validation alone is not a complete protection against SQL Injection—the most important thing is using parameterized queries.
+
+I avoid methods like DB::raw() with untrusted user input unless the input is properly controlled and parameterized. For dynamic sorting or column names, I use an allowlist rather than directly accepting a column name from the request.
+
+So, my main approach is: use Eloquent or Query Builder, use parameter binding for raw queries, validate input, and never concatenate untrusted input into SQL statements.
 
 ---
