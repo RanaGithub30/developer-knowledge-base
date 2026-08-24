@@ -19,7 +19,7 @@
 15. [How would you investigate and optimize a Laravel application's performance?](#15-how-would-you-investigate-and-optimize-a-laravel-applications-performance)
 16. [Explain Module-Based Architecture in Laravel. Why would you use it?](#16-explain-module-based-architecture-in-laravel-why-would-you-use-it)
 17. [What is a Cron Job? Why do we use it? When do we use Laravel Task Scheduling?](#17-what-is-a-cron-job-why-do-we-use-it-when-do-we-use-laravel-task-scheduling)
-## 18. [How do you prevent SQL Injection in a Laravel application?]
+18. [How do you prevent SQL Injection in a Laravel application?]
 (#18-how-do-you-prevent-sql-injection-in-a-laravel-application)
 
 ## 1. What is the Laravel Service Container and why do we use it?
