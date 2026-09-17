@@ -172,15 +172,12 @@ GROUP BY department_id
 
 ```
 SELECT e.id, e.name, e.department_id, e.salary
-FROM employees e
-JOIN (
-    SELECT department_id,
-    MAX(salary) as highest_salary
-    FROM employees
-    GROUP BY department_id
-) m
-ON e.department_id = m.department_id
-AND e.salary = m.highest_salary
+FROM employees e 
+WHERE e.salary = (
+    SELECT MAX(e2.salary) 
+    FROM employees e2
+    WHERE e2.department_id = e.department_id
+);
 ```
 
 ## 9. Write a SQL query to find departments having more than N employees.
