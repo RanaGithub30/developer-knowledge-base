@@ -60,3 +60,23 @@ CommonJS and ES Modules are two ways to import and export code between files in 
 - package.json: Contains project information, dependencies, scripts, and project configuration.
 - package-lock.json: Stores the exact versions of installed dependencies so the project can install consistent versions across different environments.
 - node_modules: The folder where installed packages and their dependencies are stored.
+
+# 7. What is Express.js, and why is it used with Node.js?
+
+## Answer:
+
+Express.js is a lightweight web framework for Node.js that makes it easier to build web applications and REST APIs.
+
+Node.js allows us to run JavaScript on the server, while Express.js provides features like routing, middleware, and request/response handling to simplify backend development.
+
+For example, in a MERN stack application, we can use Express.js to create APIs that communicate with a React frontend and interact with a MongoDB database.
+
+# 8. What is the difference between req.params, req.query and req.body?
+
+## Answer:
+
+In Express.js, req.params, req.query, and req.body are used to get data sent by the client, but they receive data from different places.
+
+- req.params: Gets values from the URL path.
+- req.query: Gets values from query strings in the URL, usually used for filtering, searching, or pagination.
+- req.body: Gets data sent in the request body, usually used when creating or updating data.
